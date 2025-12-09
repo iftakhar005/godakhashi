@@ -1,16 +1,21 @@
 
-#Iftakhar Majumder: 
-#!/bin/bash
+# Default message
+DEFAULT_MSG="ম্যাএএএএএ! কী খবর আমি তো গোডাখাশী"
+MESSAGE="${1:-$DEFAULT_MSG}"
 
+# Calculate length of the message
+LEN=${#MESSAGE}
 
+# Generate a border line of dashes based on message length
+BORDER=$(printf '%.0s-' $(seq 1 $(($LEN + 2))))
 
-DEFAULT_MESSAGE="ম্যাএএএএএ!কী খবর আমি তো গোডাখাশী"
-
-
-MESSAGE="${1:-$DEFAULT_MESSAGE}"
-
-echo "      (_("
-echo "      //'__/)"
-echo "     \"  |      |"
-echo "        |\"\"\"\"\"\"|"
-echo "$MESSAGE"
+# Print the speech bubble
+echo "  $BORDER"
+echo "< $MESSAGE >"
+echo "  $BORDER"
+echo "         \\"
+echo "          \\"
+echo "           (_("
+echo "           /_/'_____/)"
+echo "          \"  |      |"
+echo "             |\"\"\"\"\"\"|"
