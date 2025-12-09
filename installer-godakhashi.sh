@@ -1,11 +1,9 @@
 #!/bin/bash
-# Simple installer for gotakhashi
+# Simple installer for godakhashi
 
-# Download gotakhashi if not already present
-if [ ! -f gotakhashi ]; then
-    echo "Downloading gotakhashi..."
-    curl -s -O https://raw.githubusercontent.com/YOUR_USERNAME/godakhashi/main/godakhashi
-fi
+# Download godakhashi (Using the specific raw link you provided)
+echo "Downloading godakhashi..."
+curl -s -o godakhashi https://raw.githubusercontent.com/iftakhar005/godakhashi/refs/heads/main/godakhashi
 
 # Create ~/bin if it doesn't exist
 mkdir -p ~/bin
@@ -14,10 +12,15 @@ mkdir -p ~/bin
 cp godakhashi ~/bin/
 chmod +x ~/bin/godakhashi
 
-# Add ~/bin to PATH if not already
-if ! grep -q 'export PATH="$HOME/bin:$PATH"' ~/.bashrc; then
-    echo 'export PATH="$HOME/bin:$PATH"' >> ~/.bashrc
-    echo "Added ~/bin to PATH. Please restart your terminal or run: source ~/.bashrc"
-fi
+# Add ~/bin to PATH (Checking both .bashrc and .zshrc)
+# This ensures it works on your Zsh terminal too
+for rcfile in ~/.bashrc ~/.zshrc; do
+    if [ -f "$rcfile" ]; then
+        if ! grep -q 'export PATH="$HOME/bin:$PATH"' "$rcfile"; then
+            echo 'export PATH="$HOME/bin:$PATH"' >> "$rcfile"
+            echo "Added ~/bin to PATH in $rcfile"
+        fi
+    fi
+done
 
-echo "Installation complete! You can now run: godakhashi"
+echo "Installation complete! Restart your terminal and run: godakhashi"
