@@ -1,0 +1,16 @@
+
+#Iftakhar Majumder: 
+#!/bin/bash
+
+
+
+DEFAULT_MESSAGE="ম্যাএএএএএ!কী খবর আমি তো গোডাখাশী"
+
+
+MESSAGE="${1:-$DEFAULT_MESSAGE}"
+
+echo "      (_("
+echo "      //'__/)"
+echo "     \"  |      |"
+echo "        |\"\"\"\"\"\"|"
+echo "$MESSAGE"
